@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Delala-Client"
+    }
+  },
+  "defaultProject": "Delala-Client",
+  "cli": {
+    "analytics": false
+  }
 }
