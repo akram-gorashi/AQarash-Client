@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(private appService: AppService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+     this.getCurrentAppLanguage();
+  }
 
   private getCurrentAppLanguage(): void {
     // Get current language from local storage
