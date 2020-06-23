@@ -1,5 +1,9 @@
 {
    "Header": {
-      "MainPage": "Main page"
+      "MainPage": "Main page",
+      "SignUp": "Sign Up",
+      "Agent": "Agencies",
+      "Showrooms": "Car Showrooms"
+
    }
 }

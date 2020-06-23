@@ -10,6 +10,7 @@ import AppUtils from 'src/app/helper/utils/AppUtils';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  toggleNavbar = true;
   appLanguage: string;
   isAr: boolean;
   isChangingLang: any;
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(private appService: AppService) {}
 
   ngOnInit(): void {
-     this.getCurrentAppLanguage();
+    this.getCurrentAppLanguage();
   }
 
   private getCurrentAppLanguage(): void {
@@ -37,7 +38,7 @@ export class HeaderComponent implements OnInit {
     // Show loader
     this.isChangingLang = !this.isChangingLang;
     // Delay until animation ends, also switch document direction
-     await AppUtils.delay(2800);
+    await AppUtils.delay(2800);
     // Switch the language
     if (!this.appLanguage || this.appLanguage === AppLanguage.ENGLISH) {
       this.appService.setLanguage(AppLanguage.ARABIC);

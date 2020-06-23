@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 
 import * as arContent from '../assets/i18n/ar.json';
 import * as enContent from '../assets/i18n/en.json';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 const TRANSLATIONS = { ar: arContent, en: enContent };
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -40,6 +42,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
         deps: [HttpClient],
       },
     }),
+    NgbCollapseModule,
   ],
   
   providers: [],
