@@ -4,7 +4,9 @@
   display: block;
 }
 
-
+/* span {
+  text-align: right;
+} */
 .vertical-center {
    float: left;
    padding: 10px;

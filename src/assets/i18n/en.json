@@ -4,6 +4,24 @@
       "SignUp": "Sign Up",
       "Agent": "Agencies",
       "Showrooms": "Car Showrooms"
-
+   },
+   "Search": {
+      "Search": "Search",
+      "CarBrand": "Car Brand",
+      "AllBrand": "All Brand",
+      "Model": "Model",
+      "From": "From",
+      "To": "To",
+      "Status": "Status",
+      "Gair": "Gair",
+      "FuelType": "FuelType",
+      "Sale": "Sale",
+      "Buy": "Buy",
+      "Payment": "Payment"
+   },
+   "VehicleList": {
+      "Mileage": "Mileage",
+      "Price": "Price",
+      "Model": "Model"
    }
 }

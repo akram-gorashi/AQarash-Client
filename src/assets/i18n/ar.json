@@ -4,5 +4,26 @@
       "SignUp": "تسجيل",
       "Agent": "الوكالات",
       "Showrooms": "المعارض"
+   },
+
+   "Search": {
+      "Search": "بحث",
+      "CarBrand": "ماركة السيارة",
+      "AllBrand": "جميع الماركات",
+      "Model": "الموديل",
+      "From": "من",
+      "To": "إلى",
+      "Status": "الحالة",
+      "Gair": "نوع القير",
+      "FuelType": "نوع الوقود",
+      "Sale": "بيع",
+      "Buy": "إشتري",
+      "Payment": "قسط"
+   },
+
+   "VehicleList": {
+      "Mileage": "الممشى",
+      "Price": "السعر",
+      "Model": "الموديل"
    }
 }

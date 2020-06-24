@@ -1,0 +1,23 @@
+section {
+  height: 35vh !important;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(https://images.unsplash.com/photo-1495435229349-e86db7bfa013?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+}
+
+.form-label {
+  float: right;
+}
+
+.search-btn {
+  margin-top: 30px;
+}
+
+.badge {
+  font-size: 16px;
+}
+
+body[dir="ltr"] .form-label {
+  float: left !important;
+  background-color: saddlebrown !important;
+}
