@@ -1,0 +1,11 @@
+.v-image {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+
+.vertical-center {
+   float: left;
+   padding: 10px;
+}
