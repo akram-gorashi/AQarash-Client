@@ -4,9 +4,10 @@
   display: block;
 }
 
-/* span {
-  text-align: right;
-} */
+.col span {
+   display: flex;
+   align-items: flex-start;
+} 
 .vertical-center {
    float: left;
    padding: 10px;
