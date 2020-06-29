@@ -1,0 +1,12 @@
+
+.car-details .row {
+   padding-top: 20px;
+   /* border-bottom: 3px solid #2C3E50; */
+}
+
+.car-details td {
+   padding-right: 15px;
+}
+.car-details th {
+   text-align: start;
+}

@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import * as arContent from '../assets/i18n/ar.json';
 import * as enContent from '../assets/i18n/en.json';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbCollapseModule,  NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule,  NgbPaginationModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './components/vehicle/vehicle-details/vehicle-details.component';
@@ -47,7 +47,8 @@ export class TranslateUniversalLoader implements TranslateLoader {
       },
     }),
     NgbCollapseModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbCarouselModule
   ],
   
   providers: [],
