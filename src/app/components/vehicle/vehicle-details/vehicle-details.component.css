@@ -10,3 +10,8 @@
 .car-details th {
    text-align: start;
 }
+
+#carousel-image {
+   width: 100vw; 
+   height: 60vh;
+}

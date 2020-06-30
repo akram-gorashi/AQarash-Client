@@ -48,7 +48,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
     }),
     NgbCollapseModule,
     NgbPaginationModule,
-    NgbCarouselModule
+    NgbCarouselModule,
   ],
   
   providers: [],

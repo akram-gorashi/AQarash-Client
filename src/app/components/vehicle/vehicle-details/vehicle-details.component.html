@@ -1,12 +1,12 @@
-<div class="container jumbotron">
+<div class="container jumbotron pt-0">
    <div class="row">
 
       <!-- ----------------------------------------------------------------------- -->
       <!--                                Car name                                 -->
       <!-- ----------------------------------------------------------------------- -->
 
-      <div class="col">
-         <h3>Car name</h3>
+      <div class="col-lg-6 col-md-6 col-sm-12 bg-secondary pb-3 pt-3">
+         <h5>ايسوزو غمارتين 4×4 سعودي 2020 جديد</h5>
 
       </div>
 
@@ -14,33 +14,43 @@
       <!--                                Car price                                -->
       <!-- ----------------------------------------------------------------------- -->
 
-      <div class="col">
-         <h3>Car price</h3>
+      <div class="col-lg-6 col-md-6 col-sm-12 bg-secondary pb-3 pt-3 text-left">
+         <h5>250000 SDG</h5>
 
       </div>
    </div>
-   <div class="row">
+   <div class="row mt-3">
 
       <!-- ----------------------------------------------------------------------- -->
-      <!--                                Car slide                                -->
+      <!--                                Car carousel                                -->
       <!-- ----------------------------------------------------------------------- -->
 
-      <div class="col-8">
-         <h3>Car slider</h3>
+      <div class="col-lg-8 col-md-8 col-sm-12" >
+         <ngb-carousel  #carousel interval="3000" [pauseOnHover]="true">
+            <ng-template ngbSlide *ngFor="let ad of images">
+               <a href="javascript:void(0)">
+                  <img id="carousel-image" [src]="ad">
+               </a>
+            </ng-template>
+         </ngb-carousel>
       </div>
 
       <!-- ----------------------------------------------------------------------- -->
       <!--                               Car seller                                -->
       <!-- ----------------------------------------------------------------------- -->
 
-      <div class="col-4">
-         <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-            <div class="card-header">المعلن</div>
-            <div class="card-body">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTeS9XDUTM4kkh9tZaW46HDfHhmnpGDGzXMBQ&usqp=CAU" alt=""  style="max-width: 18rem;">
-              <p class="card-text"> السعودية - الرياض - النسيم , طريق عبدالرحمن بن عوف، المنار </p>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+         <div class="card">
+            <div class="card-header">
+               <h5>المعلن</h5>
             </div>
-          </div>
+            <div class="card-body">
+               <h5 class="card-title">اسم المعرض</h5>
+               <p class="card-text">مكان المعرض</p>
+               <a  class="btn btn-primary btn-block text-white">إظهار ارقام الهواتف</a>
+
+            </div>
+         </div>
       </div>
    </div>
 
@@ -130,7 +140,7 @@
       </div>
       <div class="row">
          <ul>
-            <li class="text-right">
+            <li>
                محرك 4 سلندر 2.5 CC ديزل تيربو
             </li>
          </ul>
