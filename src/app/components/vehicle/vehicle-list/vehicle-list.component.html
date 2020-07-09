@@ -1,28 +1,30 @@
-<section >
+<section>
    <div class="container p-4" style="background-color: #ecf0f1 ;">
       <div class="row mb-md-2">
-         <div class="col-md-6 col-lg-4">
-            <div class="card border-secondary  mb-3" style="max-width: 20rem;">
-               <a href="#" class="position-relative">
-                  <img src="https://via.placeholder.com/500x350/5fa9f8/ffffff" class="card-img-top" alt="image"> </a>
+         
+         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let vehicle of vehicles">
+            <div class="card border-secondary  mb-3" style="max-width: 20rem;" [routerLink]="['/vehicle-details', vehicle.id]">
+               <a class="position-relative">
+                  <img src="{{assetsUrl}}{{vehicle.imageUrl[0]}}" class="card-img-top" alt="vehicle-image"> </a>
                <div class="card-body">
                   <a class="d-flex align-items-start">
-                     <h5 class="font-weight-normal text-success">هونداي النترا 2016 ستاندر</h5>
+                     <h5 class="font-weight-normal text-success">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}
+                     </h5>
                   </a>
                   <div class="post-meta d-flex align-items-start">
                      <span class="font-weight-normal">
                         <i class="icon ion-md-pin mr-2 text-success"></i>
-                        الخرطوم
+                        {{vehicle.agentLocation}}
                      </span>
                   </div>
 
                   <div class="d-flex justify-content-between p-2">
                      <div class="col pr-0">
                         <span class="text-muted font-small  mb-2">{{ 'VehicleList.Mileage' | translate }}</span>
-                        <span class="h5 text-dark font-weight-bold">1500</span></div>
+                        <span class="h5 text-dark font-weight-bold">{{vehicle.mileage}}</span></div>
                      <div class="col pl-0">
                         <span class="text-muted font-small mb-2">{{ 'VehicleList.Price' | translate }}</span>
-                        <span class="h5 text-dark font-weight-bold">3500$</span>
+                        <span class="h5 text-dark font-weight-bold">{{vehicle.price}} جنيه</span>
                      </div>
                   </div>
                </div>
@@ -31,7 +33,7 @@
       </div>
       <div class="row justify-content-center pt-5">
          <div class="pagination pagination-lg">
-            <ngb-pagination [collectionSize]="21" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+            <pagination [totalItems]="30"></pagination> 
          </div>
       </div>
    </div>

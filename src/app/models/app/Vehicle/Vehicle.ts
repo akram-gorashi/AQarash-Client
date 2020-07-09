@@ -2,7 +2,6 @@ export interface Vehicle {
   id?: number;
   dateAdded?: string;
   make?: string;
-  typeOfCar?: string;
   mileage?: number;
   color?: string;
   condition?: string;
@@ -12,5 +11,9 @@ export interface Vehicle {
   transmission?: string;
   price?: number;
   description?: string;
+  imageUrl?: string[];
+  agentLocation?: string;
+  agentName?: string;
+  agentPhoneNumber?: string;
   pageNumber?: string;
 }

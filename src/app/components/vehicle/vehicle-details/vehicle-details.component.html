@@ -1,38 +1,40 @@
 <div class="container jumbotron pt-0">
-   <div class="row">
-
-      <!-- ----------------------------------------------------------------------- -->
+    <!-- ----------------------------------------------------------------------- -->
       <!--                                Car name                                 -->
       <!-- ----------------------------------------------------------------------- -->
+  <!--  <div class="row">
+
+     
 
       <div class="col-lg-6 col-md-6 col-sm-12 bg-secondary pb-3 pt-3">
-         <h5>ايسوزو غمارتين 4×4 سعودي 2020 جديد</h5>
+         <h5>{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</h5>
 
       </div>
 
-      <!-- ----------------------------------------------------------------------- -->
-      <!--                                Car price                                -->
-      <!-- ----------------------------------------------------------------------- -->
+
 
       <div class="col-lg-6 col-md-6 col-sm-12 bg-secondary pb-3 pt-3 text-left">
-         <h5>250000 SDG</h5>
+         <h5>{{vehicle.price}} SDG</h5>
 
       </div>
-   </div>
+   </div> -->
    <div class="row mt-3">
 
       <!-- ----------------------------------------------------------------------- -->
       <!--                                Car carousel                                -->
       <!-- ----------------------------------------------------------------------- -->
 
-      <div class="col-lg-8 col-md-8 col-sm-12" >
-         <ngb-carousel  #carousel interval="3000" [pauseOnHover]="true">
-            <ng-template ngbSlide *ngFor="let ad of images">
-               <a href="javascript:void(0)">
-                  <img id="carousel-image" [src]="ad">
-               </a>
-            </ng-template>
-         </ngb-carousel>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+         <carousel [(activeSlide)]="activeImage">
+            <slide *ngFor="let slide of vehicle.imageUrl; let index=index">
+               <img src="{{assetsUrl}}{{slide}}" alt="car slide" style="display: block; width: 100%; max-height: 30em;">
+            </slide>
+         </carousel>
+         <div class="card-body d-flex flex-wrap" >
+            <div *ngFor="let image of vehicle.imageUrl; let i = index;">
+               <img  src="{{assetsUrl}}{{image}}" alt="car slide"  [ngClass]="{'image-active': activeImage === i, 'image':activeImage !== i }"  (click)="activeImage = i">
+            </div>
+         </div>
       </div>
 
       <!-- ----------------------------------------------------------------------- -->
@@ -45,9 +47,10 @@
                <h5>المعلن</h5>
             </div>
             <div class="card-body">
-               <h5 class="card-title">اسم المعرض</h5>
-               <p class="card-text">مكان المعرض</p>
-               <a  class="btn btn-primary btn-block text-white">إظهار ارقام الهواتف</a>
+               <h5 class="card-title">{{vehicle.agentName}}</h5>
+               <p class="card-text">{{vehicle.agentLocation}}</p>
+               <!-- {{vehicle.agentPhoneNumber}} -->
+               <a class="btn btn-primary btn-block text-white">إظهار ارقام الهواتف</a>
 
             </div>
          </div>
@@ -59,41 +62,41 @@
    <!-- ----------------------------------------------------------------------- -->
    <div class="col-8  car-details">
       <div class="row">
-         car details title
+         <th>تفاصيل السيارة</th>
       </div>
       <div class="row">
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>رقم الإعلان :</th>
-            <td>10290305</td>
+            <td>{{vehicle.id}}</td>
          </div>
 
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>الماركة :</th>
-            <td> ايسوزو </td>
+            <td> {{vehicle.make}} </td>
          </div>
 
 
 
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>المدينة:</th>
-            <td>الخرطوم</td>
+            <td>{{vehicle.agentLocation}}</td>
          </div>
       </div>
       <div class="row">
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>السعر:</th>
-            <td>30000 SDG</td>
+            <td>{{vehicle.price}} SDG</td>
          </div>
 
 
 
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>الموديل :</th>
-            <td>2003</td>
+            <td>{{vehicle.model}}</td>
          </div>
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>الممشى:</th>
-            <td>50000 كيلومتر</td>
+            <td>{{vehicle.mileage}} كيلومتر</td>
          </div>
       </div>
 
@@ -104,14 +107,14 @@
          </div>
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>نوع القير :</th>
-            <td> عادي</td>
+            <td> {{vehicle.transmission}}</td>
          </div>
 
 
 
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th>نوع الوقود :</th>
-            <td> ديزل</td>
+            <td> {{vehicle.fuel}}</td>
          </div>
       </div>
       <div class="row">
@@ -124,12 +127,12 @@
 
          <div class="col-lg-4 col-md-4 col-sm-12">
             <th> اللون:</th>
-            <td>أبيض</td>
+            <td>{{vehicle.color}}</td>
          </div>
-         <div class="col-lg-4 col-md-4 col-sm-12">
+         <!-- <div class="col-lg-4 col-md-4 col-sm-12">
             <th> اللون:</th>
             <td>أبيض</td>
-         </div>
+         </div> -->
       </div>
 
       <!-- ----------------------------------------------------------------------- -->
@@ -141,7 +144,7 @@
       <div class="row">
          <ul>
             <li>
-               محرك 4 سلندر 2.5 CC ديزل تيربو
+               {{vehicle.description}}
             </li>
          </ul>
       </div>
