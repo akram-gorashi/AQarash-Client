@@ -49,7 +49,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
    
     }),
     CarouselModule,
-    PaginationModule,
+    PaginationModule.forRoot(),
     BrowserAnimationsModule,
   ],
   

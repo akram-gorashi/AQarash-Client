@@ -16,8 +16,9 @@ export class VehiclesService {
   requestGetVehicles() {
     // Construct Http URL String query parameters from queries object
     //const httpParams = new HttpParams({ fromObject: filterQuery });
-    this.http.get(this.vehiclesUrl).subscribe((vehicles: Vehicle[]) => {
-      this.setVehicle(vehicles);
+    this.http.get<Vehicle[]>(this.vehiclesUrl, {observe: 'response'}).subscribe(res => {
+       console.log(res.headers.get('X-Pagination'));
+       this.setVehicle(res.body);
     });
   }
 

@@ -27,12 +27,4 @@ export class VehicleListComponent implements OnInit {
     });
   }
 
-  vehicleDetails(vehicleId) {
-   let navigationExtras: NavigationExtras = {
-      queryParams: { 'id': vehicleId },
-    };
-    console.log(vehicleId, navigationExtras)
-    // Navigate to the vehicle-details page with extras
-    this.router.navigate(['vehicle-details'], navigationExtras);
-  }
 }
