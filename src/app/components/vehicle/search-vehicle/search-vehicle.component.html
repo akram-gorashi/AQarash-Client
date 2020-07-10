@@ -19,7 +19,7 @@
                         <div class="col-md-2 col-sm-12">
                            <div class="form-group">
                               <label >{{ 'Search.CarBrand' | translate }}</label>
-                              <ng-select class="form-control" [items]="masterTableData.make" bindLabel="nameAr" [loading]="!masterTableData.make"
+                              <ng-select class="form-control" placeholder="جميع الماركات" [items]="masterTableData.make" bindLabel="nameAr" [loading]="!masterTableData.make"
                                  bindValue="nameAr" formControlName="make">
                               </ng-select>
                            </div>
@@ -29,15 +29,14 @@
                            <div class="form-group">
                               <label >{{ 'Search.Model' | translate }}</label>
                               <ng-select class="form-control" [items]="masterTableData.model" bindLabel="nameAr" [loading]="!masterTableData.model"
-                                 bindValue="nameAr" formControlName="model">
+                                 bindValue="nameAr" formControlName="model" placeholder="من">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
                            <div class="form-group">
-                              <label >{{ 'Search.Model' | translate }}</label>
-                              <ng-select class="form-control" [items]="masterTableData.model" bindLabel="nameAr" [loading]="!masterTableData.model"
-                                 bindValue="nameAr" formControlName="model">
+                              <ng-select class="form-control to-label" [items]="masterTableData.model" bindLabel="nameAr" [loading]="!masterTableData.model"
+                                 bindValue="nameAr" formControlName="model" placeholder="إلى">
                               </ng-select>
                            </div>
                         </div>
@@ -45,7 +44,7 @@
                            <div class="form-group">
                               <label >{{ 'Search.Status' | translate }}</label>
                               <ng-select class="form-control" [items]="masterTableData.condition" bindLabel="nameAr" [loading]="!masterTableData.condition"
-                                 bindValue="nameAr" formControlName="condition">
+                                 bindValue="nameAr" formControlName="condition" placeholder="جديد - مستعمل">
                               </ng-select>
                            </div>
                         </div>
@@ -53,14 +52,14 @@
                            <div class="form-group">
                               <label >{{ 'Search.Gair' | translate }}</label>
                               <ng-select class="form-control" [items]="masterTableData.transmission" bindLabel="nameAr" [loading]="!masterTableData.transmission"
-                                 bindValue="nameAr" formControlName="transmission">
+                                 bindValue="nameAr" formControlName="transmission" placeholder="الجميع">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                            <label >{{ 'Search.FuelType' | translate }}</label>
                            <ng-select class="form-control" [items]="masterTableData.fuel" bindLabel="nameAr" [loading]="!masterTableData.fuel"
-                              bindValue="nameAr" formControlName="fuel">
+                              bindValue="nameAr" formControlName="fuel"  placeholder="نوع الوقود">
                            </ng-select>
                         </div>
                         <div class="col-md-2 col-sm-12">

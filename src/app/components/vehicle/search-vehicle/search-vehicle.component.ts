@@ -11,7 +11,6 @@ import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 export class SearchVehicleComponent implements OnInit {
   masterTableData: any = {};
   vehicleSearchFormGroup: any;
-
   constructor(private vehicleService: VehiclesService) {}
 
   ngOnInit(): void {

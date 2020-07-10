@@ -15,6 +15,7 @@ export class VehiclesService {
   pagination: BehaviorSubject<PaginationResponse> = new BehaviorSubject<
     PaginationResponse
   >({} as PaginationResponse);
+  isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {}
 
   requestGetVehicles(filterQuery?: Vehicle) {
@@ -26,13 +27,15 @@ export class VehiclesService {
 
     // remove last '&'
     myQuery = myQuery.substring(0, myQuery.length - 1);
+    // show the loader
+    this.isLoading.next(true);
     this.http
       .get<Vehicle[]>(myQuery, { observe: 'response' })
       .subscribe((res) => {
-        console.log(res);
         //  Set pagination info from response header
         this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
         this.setVehicle(res.body);
+        this.isLoading.next(false);
       });
   }
 
@@ -45,7 +48,6 @@ export class VehiclesService {
   }
 
   public getVehicle(id: number) {
-    // const params = new HttpParams().set('id', id.toString())
     return this.http.get(this.vehiclesUrl + '/' + id);
   }
 

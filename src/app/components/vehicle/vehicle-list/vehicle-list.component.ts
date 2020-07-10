@@ -15,7 +15,7 @@ export class VehicleListComponent implements OnInit {
   page: number = 1;
   assetsUrl: string = environment.assetsUrl;
   paginationInfo: PaginationResponse = <PaginationResponse>{};
-  isLoading: boolean = false;
+  isLoading: boolean;
   constructor(
     private vehicleService: VehiclesService,
     private router: Router
@@ -23,12 +23,12 @@ export class VehicleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVehicleList();
+    //TODO: fix loader
+   //  this.watchLoader();
   }
 
   getVehicleList(pageQuery?) {
-    this.isLoading = true;
     this.vehicleService.requestGetVehicles(pageQuery)
-      this.isLoading = false;
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
       this.paginationInfo = this.vehicleService.pagination.value;
@@ -36,6 +36,9 @@ export class VehicleListComponent implements OnInit {
     });
   }
 
+  watchLoader() {
+   this.vehicleService.isLoading.subscribe(isLoading => {this.isLoading = isLoading;});
+  }
   pageChanged(e: any) {
       let pageQuery = {pageNumber: e.page, pageSize: e.itemsPerPage}
       console.log(pageQuery)
