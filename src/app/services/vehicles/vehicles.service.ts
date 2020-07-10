@@ -12,19 +12,28 @@ import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationRespons
 export class VehiclesService {
   vehiclesUrl = environment.apiUrl + 'vehicle';
   vehicles: BehaviorSubject<Vehicle[]> = new BehaviorSubject<Vehicle[]>([]);
-  pagination: BehaviorSubject<PaginationResponse>= new BehaviorSubject<PaginationResponse>({} as PaginationResponse);
+  pagination: BehaviorSubject<PaginationResponse> = new BehaviorSubject<
+    PaginationResponse
+  >({} as PaginationResponse);
   constructor(private http: HttpClient) {}
 
   requestGetVehicles(filterQuery?: Vehicle) {
     // Construct Http URL String query parameters from queries object
-    let myQuery = this.vehiclesUrl +'?'
+    let myQuery = this.vehiclesUrl + '?';
     for (let entry in filterQuery) {
-        myQuery += entry + '=' + encodeURIComponent(filterQuery[entry]) + '&';
+      myQuery += entry + '=' + encodeURIComponent(filterQuery[entry]) + '&';
     }
 
     // remove last '&'
-    myQuery = myQuery.substring(0, myQuery.length-1)
-   return this.http.get<Vehicle[]>(myQuery , {observe: 'response' })
+    myQuery = myQuery.substring(0, myQuery.length - 1);
+    this.http
+      .get<Vehicle[]>(myQuery, { observe: 'response' })
+      .subscribe((res) => {
+        console.log(res);
+        //  Set pagination info from response header
+        this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
+        this.setVehicle(res.body);
+      });
   }
 
   public setVehicle(vehicles: Vehicle[]): void {
@@ -36,20 +45,19 @@ export class VehiclesService {
   }
 
   public getVehicle(id: number) {
-   // const params = new HttpParams().set('id', id.toString())
-    return this.http.get(this.vehiclesUrl +'/'+ id);
+    // const params = new HttpParams().set('id', id.toString())
+    return this.http.get(this.vehiclesUrl + '/' + id);
   }
 
   public getMasterTableData() {
-   return this.http.get<any>(environment.apiUrl + 'masterTable');
- }
+    return this.http.get<any>(environment.apiUrl + 'masterTable');
+  }
 
- /* public setPaginationInfo(paginationInfo: PaginationResponse) {
-   this.pagination.next(paginationInfo)
- }
+  public setPaginationInfo(paginationInfo: PaginationResponse) {
+    this.pagination.next(paginationInfo);
+  }
 
- public getPaginationInfo(): BehaviorSubject<PaginationResponse> {
+  public getPaginationInfo(): BehaviorSubject<PaginationResponse> {
     return this.pagination;
- } */
-
+  }
 }

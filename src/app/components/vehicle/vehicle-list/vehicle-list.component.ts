@@ -25,20 +25,21 @@ export class VehicleListComponent implements OnInit {
     this.getVehicleList();
   }
 
-  getVehicleList() {
+  getVehicleList(pageQuery?) {
     this.isLoading = true;
-    this.vehicleService.requestGetVehicles().subscribe((res) => {
-      //  Set pagination info from response header
-      this.paginationInfo = JSON.parse(res.headers.get('X-Pagination'));
-      this.vehicleService.setVehicle(res.body);
+    this.vehicleService.requestGetVehicles(pageQuery)
       this.isLoading = false;
-    });
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
-
+      this.paginationInfo = this.vehicleService.pagination.value;
       console.log(this.vehicles);
     });
   }
 
-  pageChanged(e: any) {}
+  pageChanged(e: any) {
+      let pageQuery = {pageNumber: e.page, pageSize: e.itemsPerPage}
+      console.log(pageQuery)
+      this.vehicleService.requestGetVehicles(pageQuery)
+
+  }
 }
