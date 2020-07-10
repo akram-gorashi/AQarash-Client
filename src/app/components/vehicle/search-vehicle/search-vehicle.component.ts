@@ -54,6 +54,12 @@ export class SearchVehicleComponent implements OnInit {
       }
     }
     console.log(vehicleToSearch);
-    // this.vehicleService.requestGetVehicles(this.vehicleSearchFormGroup.value)
+    if (Object.keys(vehicleToSearch).length === 0) {
+       console.log(vehicleToSearch);
+       return
+    } else {
+      this.vehicleService.requestGetVehicles(vehicleToSearch)
+    }
+     
   }
 }

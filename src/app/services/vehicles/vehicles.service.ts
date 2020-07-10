@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -11,15 +12,19 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 export class VehiclesService {
   vehiclesUrl = environment.apiUrl + 'vehicle';
   vehicles: BehaviorSubject<Vehicle[]> = new BehaviorSubject<Vehicle[]>([]);
+  pagination: BehaviorSubject<PaginationResponse>= new BehaviorSubject<PaginationResponse>({} as PaginationResponse);
   constructor(private http: HttpClient) {}
 
-  requestGetVehicles() {
+  requestGetVehicles(filterQuery?: Vehicle) {
     // Construct Http URL String query parameters from queries object
-    //const httpParams = new HttpParams({ fromObject: filterQuery });
-    this.http.get<Vehicle[]>(this.vehiclesUrl, {observe: 'response'}).subscribe(res => {
-       console.log(res.headers.get('X-Pagination'));
-       this.setVehicle(res.body);
-    });
+    let myQuery = this.vehiclesUrl +'?'
+    for (let entry in filterQuery) {
+        myQuery += entry + '=' + encodeURIComponent(filterQuery[entry]) + '&';
+    }
+
+    // remove last '&'
+    myQuery = myQuery.substring(0, myQuery.length-1)
+   return this.http.get<Vehicle[]>(myQuery , {observe: 'response' })
   }
 
   public setVehicle(vehicles: Vehicle[]): void {
@@ -32,12 +37,19 @@ export class VehiclesService {
 
   public getVehicle(id: number) {
    // const params = new HttpParams().set('id', id.toString())
-   // console.log(this.vehiclesUrl, params.toString())
     return this.http.get(this.vehiclesUrl +'/'+ id);
   }
 
   public getMasterTableData() {
    return this.http.get<any>(environment.apiUrl + 'masterTable');
  }
+
+ /* public setPaginationInfo(paginationInfo: PaginationResponse) {
+   this.pagination.next(paginationInfo)
+ }
+
+ public getPaginationInfo(): BehaviorSubject<PaginationResponse> {
+    return this.pagination;
+ } */
 
 }

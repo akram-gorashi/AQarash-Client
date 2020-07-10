@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // ngxModules //
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -55,7 +55,8 @@ export class TranslateUniversalLoader implements TranslateLoader {
     PaginationModule.forRoot(),
     BrowserAnimationsModule,
     NgSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   
   providers: [],
