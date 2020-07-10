@@ -35,4 +35,9 @@ export class VehiclesService {
    // console.log(this.vehiclesUrl, params.toString())
     return this.http.get(this.vehiclesUrl +'/'+ id);
   }
+
+  public getMasterTableData() {
+   return this.http.get<any>(environment.apiUrl + 'masterTable');
+ }
+
 }
