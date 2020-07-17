@@ -43,6 +43,8 @@ export class VehicleListComponent implements OnInit {
       let pageQuery = {pageNumber: e.page, pageSize: e.itemsPerPage}
       console.log(pageQuery)
       this.vehicleService.requestGetVehicles(pageQuery)
-
-  }
+      window.scroll({
+         top: 100,
+         behavior: 'smooth'
+       });  }
 }

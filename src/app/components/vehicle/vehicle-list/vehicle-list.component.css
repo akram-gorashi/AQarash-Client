@@ -1,13 +1,10 @@
 .card {
    cursor: pointer;
 }
-
-.v-image {
-  height: 100%;
-  width: 100%;
-  display: block;
+.card-img-top {
+   min-height: 15rem;
+   max-height: 15rem;
 }
-
 .col span {
    display: flex;
    align-items: flex-start;
@@ -16,3 +13,4 @@
    float: left;
    padding: 10px;
 }
+

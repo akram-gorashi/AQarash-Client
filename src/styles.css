@@ -17,3 +17,17 @@ body[dir='ltr'] {
 .padded {
    margin: 2em;
 }
+
+.ng-option {
+   min-height: 0px;
+   border-radius: 0;
+   background-color: #ffff !important;
+   color: #000;
+   }
+   ng-select.typeahead.opened .ng-placeholder {
+      display: block !important;
+   }
+   
+   ng-select.typeahead.opened .ng-value {
+      display: none !important;
+   }
