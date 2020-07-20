@@ -8,8 +8,6 @@ const routes: Routes = [
    { path: 'header', component: HeaderComponent},
    { path: '', component: VehicleListComponent},
    { path: 'vehicle-details/:id', component: VehicleDetailsComponent},
-
-
 ];
 
 @NgModule({

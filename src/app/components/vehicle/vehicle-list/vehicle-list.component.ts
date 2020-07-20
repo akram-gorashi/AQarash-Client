@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 import { environment } from 'src/environments/environment';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationResponse';
 
 @Component({
@@ -18,10 +18,14 @@ export class VehicleListComponent implements OnInit {
   isLoading: boolean;
   constructor(
     private vehicleService: VehiclesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+
+    // load page based on 'page' query param or default to 1
+   //  this.route.queryParams.subscribe(x => this.paginationInfo.CurrentPage);
     this.getVehicleList();
     //TODO: fix loader
    //  this.watchLoader();
