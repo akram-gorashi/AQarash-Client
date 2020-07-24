@@ -11,11 +11,20 @@ import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 export class SearchVehicleComponent implements OnInit {
   masterTableData: any = {};
   vehicleSearchFormGroup: any;
+  years = [];
   constructor(private vehicleService: VehiclesService) {}
 
   ngOnInit(): void {
     this.getMasterTableData();
     this.initForm();
+     this.generateYears();
+  }
+  generateYears() {
+    var nowY = new Date().getFullYear()
+    for (var Y = nowY; Y >= nowY-35; Y--) {
+      this.years.push(Y);
+   }
+    console.log(this.years)
   }
 
   initForm(): void {
@@ -25,7 +34,8 @@ export class SearchVehicleComponent implements OnInit {
       color: new FormControl(null),
       condition: new FormControl(null),
       model: new FormControl(null),
-      year: new FormControl(null),
+      minYear: new FormControl(null),
+      maxYear: new FormControl(null),
       fuel: new FormControl(null),
       transmission: new FormControl(null),
       price: new FormControl(null),
@@ -48,17 +58,15 @@ export class SearchVehicleComponent implements OnInit {
     let vehicleToSearch: Vehicle = this.vehicleSearchFormGroup.value;
     for (var prop in vehicleToSearch) {
       if (vehicleToSearch.hasOwnProperty(prop)) {
-        if (vehicleToSearch[prop] === null) 
-            delete vehicleToSearch[prop];
+        if (vehicleToSearch[prop] === null) delete vehicleToSearch[prop];
       }
     }
     console.log(vehicleToSearch);
     if (Object.keys(vehicleToSearch).length === 0) {
-       console.log(vehicleToSearch);
-       return
+      console.log(vehicleToSearch);
+      return;
     } else {
-      this.vehicleService.requestGetVehicles(vehicleToSearch)
+      this.vehicleService.requestGetVehicles(vehicleToSearch);
     }
-     
   }
 }

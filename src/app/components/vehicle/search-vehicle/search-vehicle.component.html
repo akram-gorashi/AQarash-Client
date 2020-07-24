@@ -18,55 +18,75 @@
                      <div class="form-row">
                         <div class="col-md-2 col-sm-12">
                            <div class="form-group">
-                              <label >{{ 'Search.CarBrand' | translate }}</label>
-                              <ng-select class="form-control" placeholder="جميع الماركات" [items]="masterTableData.make" bindLabel="nameAr" [loading]="!masterTableData.make"
+                              <label>{{ 'Search.CarBrand' | translate }}</label>
+                              <!--  <ng-select class="form-control" placeholder="جميع الماركات" [items]="masterTableData.make" bindLabel="nameAr" [loading]="!masterTableData.make"
                                  bindValue="nameAr" formControlName="make">
-                              </ng-select>
+                              </ng-select> -->
+                              <input type="text" class="form-control" placeholder="جميع الماركات"
+                                 formControlName="make" />
+                           </div>
+                        </div>
+
+                        <div class="col-md-2 col-sm-12">
+                           <div class="form-group">
+                              <label>نوع السيارة</label>
+                              <!--  <ng-select class="form-control" placeholder="جميع الماركات" [items]="masterTableData.make" bindLabel="nameAr" [loading]="!masterTableData.make"
+                                 bindValue="nameAr" formControlName="make">
+                              </ng-select> -->
+                              <input type="text" class="form-control" placeholder="جميع الأنواع"
+                                 formControlName="model" />
                            </div>
                         </div>
 
                         <div class="col-md-1 col-sm-12">
                            <div class="form-group">
-                              <label >{{ 'Search.Model' | translate }}</label>
-                              <ng-select class="form-control" [items]="masterTableData.model" bindLabel="nameAr" [loading]="!masterTableData.model"
-                                 bindValue="nameAr" formControlName="model" placeholder="من">
+                              <label>{{ 'Search.Model' | translate }}</label>
+                              <ng-select class="form-control" [items]="years" formControlName="minYear"
+                                 placeholder="من">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-1 col-sm-12">
                            <div class="form-group">
-                              <ng-select class="form-control to-label" [items]="masterTableData.model" bindLabel="nameAr" [loading]="!masterTableData.model"
-                                 bindValue="nameAr" formControlName="model" placeholder="إلى">
+                              <ng-select class="form-control to-label" [items]="years" formControlName="maxYear"
+                                 placeholder="إلى">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                            <div class="form-group">
-                              <label >{{ 'Search.Status' | translate }}</label>
-                              <ng-select class="form-control" [items]="masterTableData.condition" bindLabel="nameAr" [loading]="!masterTableData.condition"
-                                 bindValue="nameAr" formControlName="condition" placeholder="جديد - مستعمل">
+                              <label>{{ 'Search.Status' | translate }}</label>
+                              <ng-select class="form-control" [items]="masterTableData.condition" bindLabel="nameAr"
+                                 [loading]="!masterTableData.condition" bindValue="nameAr" formControlName="condition"
+                                 placeholder="جديد - مستعمل">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
                            <div class="form-group">
-                              <label >{{ 'Search.Gair' | translate }}</label>
-                              <ng-select class="form-control" [items]="masterTableData.transmission" bindLabel="nameAr" [loading]="!masterTableData.transmission"
-                                 bindValue="nameAr" formControlName="transmission" placeholder="الجميع">
+                              <label>{{ 'Search.Gair' | translate }}</label>
+                              <ng-select class="form-control" [items]="masterTableData.transmission" bindLabel="nameAr"
+                                 [loading]="!masterTableData.transmission" bindValue="nameAr"
+                                 formControlName="transmission" placeholder="الجميع">
                               </ng-select>
                            </div>
                         </div>
                         <div class="col-md-2 col-sm-12">
-                           <label >{{ 'Search.FuelType' | translate }}</label>
-                           <ng-select class="form-control" [items]="masterTableData.fuel" bindLabel="nameAr" [loading]="!masterTableData.fuel"
-                              bindValue="nameAr" formControlName="fuel"  placeholder="نوع الوقود">
+                           <label>{{ 'Search.FuelType' | translate }}</label>
+                           <ng-select class="form-control" [items]="masterTableData.fuel" bindLabel="nameAr"
+                              [loading]="!masterTableData.fuel" bindValue="nameAr" formControlName="fuel"
+                              placeholder="نوع الوقود">
                            </ng-select>
                         </div>
-                        <div class="col-md-2 col-sm-12">
-                           <button
-                              class="btn btn-primary btn-block shadow search-btn" type="button" (click)="searchCar()">{{ 'Search.Search' | translate }}
-                           </button>
-                        </div>
+
+                     </div>
+                     <div class="row pt-0 justify-content-center">
+
+                        <button class="btn btn-primary shadow search-btn" type="button"
+                           (click)="searchCar()">{{ 'Search.Search' | translate }}
+                        </button>
+
+
                      </div>
                   </form>
 
