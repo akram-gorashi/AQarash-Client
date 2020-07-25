@@ -27,6 +27,7 @@ export class VehiclesService {
 
     // remove last '&'
     myQuery = myQuery.substring(0, myQuery.length - 1);
+    console.log(myQuery)
     // show the loader
     this.isLoading.next(true);
     this.http

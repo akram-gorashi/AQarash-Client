@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 import { environment } from 'src/environments/environment';
@@ -11,7 +11,7 @@ import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationRespons
   styleUrls: ['./vehicle-list.component.css'],
 })
 export class VehicleListComponent implements OnInit {
-  vehicles: Vehicle[];
+  @Input() vehicles: Vehicle[];
   page: number = 1;
   assetsUrl: string = environment.assetsUrl;
   paginationInfo: PaginationResponse = <PaginationResponse>{};
@@ -23,32 +23,38 @@ export class VehicleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     // load page based on 'page' query param or default to 1
-   //  this.route.queryParams.subscribe(x => this.paginationInfo.CurrentPage);
+    //  this.route.queryParams.subscribe(x => this.paginationInfo.CurrentPage);
     this.getVehicleList();
     //TODO: fix loader
-   //  this.watchLoader();
+    //  this.watchLoader();
   }
 
   getVehicleList(pageQuery?) {
-    this.vehicleService.requestGetVehicles(pageQuery)
+    this.vehicleService.requestGetVehicles(pageQuery);
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
       this.paginationInfo = this.vehicleService.pagination.value;
+      /* this.router.navigate([], {
+         queryParams: {
+            pageNumber: this.paginationInfo.CurrentPage
+      }}) */
       console.log(this.vehicles);
     });
   }
 
   watchLoader() {
-   this.vehicleService.isLoading.subscribe(isLoading => {this.isLoading = isLoading;});
+    this.vehicleService.isLoading.subscribe((isLoading) => {
+      this.isLoading = isLoading;
+    });
   }
   pageChanged(e: any) {
-      let pageQuery = {pageNumber: e.page, pageSize: e.itemsPerPage}
-      console.log(pageQuery)
-      this.vehicleService.requestGetVehicles(pageQuery)
-      window.scroll({
-         top: 100,
-         behavior: 'smooth'
-       });  }
+    let pageQuery = { pageNumber: e.page, pageSize: e.itemsPerPage };
+    console.log(pageQuery);
+    this.vehicleService.requestGetVehicles(pageQuery);
+    window.scroll({
+      top: 100,
+      behavior: 'smooth',
+    });
+  }
 }

@@ -16,4 +16,5 @@ export interface Vehicle {
   agentName?: string;
   agentPhoneNumber?: string;
   pageNumber?: string;
+  relatedVehicles?: any[];
 }

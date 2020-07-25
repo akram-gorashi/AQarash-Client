@@ -1,8 +1,8 @@
 <div class="container jumbotron pt-0">
-    <!-- ----------------------------------------------------------------------- -->
-      <!--                                Car name                                 -->
-      <!-- ----------------------------------------------------------------------- -->
-  <!--  <div class="row">
+   <!-- ----------------------------------------------------------------------- -->
+   <!--                                Car name                                 -->
+   <!-- ----------------------------------------------------------------------- -->
+   <!--  <div class="row">
 
      
 
@@ -30,9 +30,10 @@
                <img src="{{assetsUrl}}{{slide}}" alt="car slide" style="display: block; width: 100%; max-height: 30em;">
             </slide>
          </carousel>
-         <div class="card-body d-flex flex-wrap" >
+         <div class="card-body d-flex flex-wrap">
             <div *ngFor="let image of vehicle.imageUrl; let i = index;">
-               <img  src="{{assetsUrl}}{{image}}" alt="car slide"  [ngClass]="{'image-active': activeImage === i, 'image':activeImage !== i }"  (click)="activeImage = i">
+               <img src="{{assetsUrl}}{{image}}" alt="car slide"
+                  [ngClass]="{'image-active': activeImage === i, 'image':activeImage !== i }" (click)="activeImage = i">
             </div>
          </div>
       </div>
@@ -143,5 +144,12 @@
                {{vehicle.description}}
             </li>
          </ul>
+      </div>
+
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                             related Vehicle                             -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div class="row">
+         <app-vehicle-list [vehicles]="vehicle.relatedVehicles"></app-vehicle-list>
       </div>
    </div>
