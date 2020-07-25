@@ -27,15 +27,29 @@
       <div class="col-lg-8 col-md-8 col-sm-12">
          <carousel [(activeSlide)]="activeImage">
             <slide *ngFor="let slide of vehicle.imageUrl; let index=index">
-               <img src="{{assetsUrl}}{{slide}}" alt="car slide" style="display: block; width: 100%; max-height: 30em;">
+               <img src="{{slide}}" alt="car slide" style="display: block; width: 100%; max-height: 30em;">
+               <div class="carousel-caption d-none d-md-block">
+                  <button class="btn btn-primary shadow search-btn" type="button" (click)="openGallery(0)">
+                     مشاهدة جميع الصور
+                  </button>
+               </div>
             </slide>
          </carousel>
-         <div class="card-body d-flex flex-wrap">
+         <ngx-image-gallery 
+         [images]="vehicle.imageUrl" 
+         [conf]="conf"
+         (onOpen)="galleryOpened($event)"
+         (onClose)="galleryClosed()"
+         (onImageClicked)="galleryImageClicked($event)"
+         (onImageChange)="galleryImageChanged($event)"
+         (onDelete)="deleteImage($event)"
+         ></ngx-image-gallery>
+         <!--  <div class="card-body d-flex flex-wrap">
             <div *ngFor="let image of vehicle.imageUrl; let i = index;">
                <img src="{{assetsUrl}}{{image}}" alt="car slide"
                   [ngClass]="{'image-active': activeImage === i, 'image':activeImage !== i }" (click)="activeImage = i">
             </div>
-         </div>
+         </div> -->
       </div>
 
       <!-- ----------------------------------------------------------------------- -->

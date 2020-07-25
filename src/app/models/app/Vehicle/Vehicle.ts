@@ -1,3 +1,5 @@
+import { GALLERY_IMAGE } from 'ngx-image-gallery';
+
 export interface Vehicle {
   id?: number;
   dateAdded?: string;
@@ -11,7 +13,7 @@ export interface Vehicle {
   transmission?: string;
   price?: number;
   description?: string;
-  imageUrl?: string[];
+  imageUrl?: GALLERY_IMAGE[];
   agentLocation?: string;
   agentName?: string;
   agentPhoneNumber?: string;
