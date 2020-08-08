@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
   constructor(@Inject(AppService) private translateService: TranslateService) {}
 
   ngOnInit() {
-    this.locale = this.translateService.currentLang;
+   /*  this.locale = this.translateService.currentLang;
     this.translateService.onLangChange.subscribe(
       (langChangeEvent: LangChangeEvent) => {
         this.locale = langChangeEvent.lang;
       }
-    );
+    ); */
   }
 }

@@ -7,6 +7,7 @@ import { VehicleDetailsComponent } from './components/vehicle/vehicle-details/ve
 const routes: Routes = [
    { path: 'header', component: HeaderComponent},
    { path: '', component: VehicleListComponent},
+   { path: ':pageNumber', component: VehicleListComponent},
    { path: 'vehicle-details/:id', component: VehicleDetailsComponent},
 ];
 

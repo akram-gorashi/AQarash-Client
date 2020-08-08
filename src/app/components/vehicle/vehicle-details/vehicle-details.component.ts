@@ -51,14 +51,14 @@ export class VehicleDetailsComponent implements OnInit {
     }),
       (error: any) => {
         console.log(error);
-      },
-      (complete: any) => {
+      }
+      /* (complete: any) => {
          console.log(complete)
         this.vehicle.imageUrl.forEach((imageUrl) => {
           imageUrl = this.assetsUrl + imageUrl;
         });
         console.log(this.vehicle.imageUrl);
-      };
+      }; */
   }
 
   // METHODS

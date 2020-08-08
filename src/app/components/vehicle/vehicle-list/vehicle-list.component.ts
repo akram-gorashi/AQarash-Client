@@ -12,7 +12,6 @@ import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationRespons
 })
 export class VehicleListComponent implements OnInit {
   @Input() vehicles: Vehicle[];
-  page: number = 1;
   assetsUrl: string = environment.assetsUrl;
   paginationInfo: PaginationResponse = <PaginationResponse>{};
   isLoading: boolean;
@@ -24,21 +23,34 @@ export class VehicleListComponent implements OnInit {
 
   ngOnInit(): void {
     // load page based on 'page' query param or default to 1
-    //  this.route.queryParams.subscribe(x => this.paginationInfo.CurrentPage);
-    this.getVehicleList();
+    this.getCurrentPage();
     //TODO: fix loader
     //  this.watchLoader();
   }
 
+  getCurrentPage() {
+    console.log('fghddgd');
+
+    let pageNumber = this.route.snapshot.params['pageNumber'];
+    console.log(pageNumber);
+    if (pageNumber == undefined) {
+      this.getVehicleList();
+    } else {
+      console.log(pageNumber);
+      this.router.navigate([], {
+        queryParams: {
+          pageNumber: pageNumber,
+        },
+      });
+      this.getVehicleList(pageNumber);
+    }
+  }
   getVehicleList(pageQuery?) {
     this.vehicleService.requestGetVehicles(pageQuery);
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
       this.paginationInfo = this.vehicleService.pagination.value;
-      /* this.router.navigate([], {
-         queryParams: {
-            pageNumber: this.paginationInfo.CurrentPage
-      }}) */
+
       console.log(this.vehicles);
     });
   }
