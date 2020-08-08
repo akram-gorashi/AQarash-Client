@@ -37,6 +37,13 @@ export class VehiclesService {
         this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
         this.setVehicle(res.body);
         this.isLoading.next(false);
+      }, err => {
+         console.log(err)
+      }, () => {
+         window.scroll({
+            top: 100,
+            behavior: 'smooth',
+          });
       });
   }
 
