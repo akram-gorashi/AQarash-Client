@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import 'hammerjs';
 
 // ngxModules //
@@ -12,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 // ngxModules //
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
@@ -56,10 +58,12 @@ export class TranslateUniversalLoader implements TranslateLoader {
     CarouselModule,
     PaginationModule.forRoot(),
     BrowserAnimationsModule,
+    CollapseModule,
     NgSelectModule,
     NgxImageGalleryModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   
   providers: [],

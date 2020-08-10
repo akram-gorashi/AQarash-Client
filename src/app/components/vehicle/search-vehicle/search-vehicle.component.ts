@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
@@ -12,19 +12,22 @@ export class SearchVehicleComponent implements OnInit {
   masterTableData: any = {};
   vehicleSearchFormGroup: any;
   years = [];
-  constructor(private vehicleService: VehiclesService) {}
+  isOnMidScreen: boolean;
+  constructor(
+    private vehicleService: VehiclesService,
+  ) {}
 
   ngOnInit(): void {
     this.getMasterTableData();
     this.initForm();
-     this.generateYears();
+    this.generateYears();
   }
   generateYears() {
-    var nowY = new Date().getFullYear()
-    for (var Y = nowY; Y >= nowY-35; Y--) {
+    var nowY = new Date().getFullYear();
+    for (var Y = nowY; Y >= nowY - 35; Y--) {
       this.years.push(Y);
-   }
-    console.log(this.years)
+    }
+    console.log(this.years);
   }
 
   initForm(): void {
@@ -69,4 +72,13 @@ export class SearchVehicleComponent implements OnInit {
       this.vehicleService.requestGetVehicles(vehicleToSearch);
     }
   }
+ // Listen for window size changes
+ @HostListener('window:resize', ['$event'])
+ getScreenSize(event?): void {
+   // If browser window is resized below mid screen size width
+   window.innerWidth <= 500
+     ? (this.isOnMidScreen = true)
+     : (this.isOnMidScreen = false);
+ }
+  
 }

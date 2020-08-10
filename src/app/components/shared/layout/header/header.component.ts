@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LocallyStoredItemsKeys } from 'src/app/models/app/LocallyStoredItemsKeys';
 import { AppService } from 'src/app/services/app/app.service';
 import { AppLanguage } from 'src/app/models/app/AppLanguage';
 import AppUtils from 'src/app/helper/utils/AppUtils';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { SearchVehicleComponent } from 'src/app/components/vehicle/search-vehicle/search-vehicle.component';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +16,13 @@ export class HeaderComponent implements OnInit {
   appLanguage: string;
   isAr: boolean;
   isChangingLang: any;
-
-  constructor(private appService: AppService) {}
+  bsModalRef: BsModalRef;
+  isOnMidScreen: boolean;
+  isCollapsed = false;
+  constructor(
+    private appService: AppService,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.getCurrentAppLanguage();
@@ -49,5 +56,19 @@ export class HeaderComponent implements OnInit {
       this.isAr = false;
       this.isChangingLang = !this.isChangingLang;
     }
+  }
+
+  openModalWithComponent() {
+    this.bsModalRef = this.modalService.show(SearchVehicleComponent, {class:'modal-dialog-centered'});
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  // Listen for window size changes
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?): void {
+    // If browser window is resized below mid screen size width
+    window.innerWidth <= 500
+      ? (this.isOnMidScreen = true)
+      : (this.isOnMidScreen = false);
   }
 }

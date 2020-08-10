@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 import { environment } from 'src/environments/environment';
-import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationResponse';
 
 @Component({
@@ -12,8 +12,9 @@ import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationRespons
 })
 
 export class VehicleListComponent implements OnInit {
-   
+
   @Input() vehicles: Vehicle[];
+  @Input() showVehicleList : boolean = true;
   assetsUrl: string = environment.assetsUrl;
   paginationInfo: PaginationResponse = <PaginationResponse>{};
   isLoading: boolean;
@@ -24,23 +25,25 @@ export class VehicleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+     console.log(this.showVehicleList)
     // load page based on 'page' query param or default to 1
-    this.getCurrentPage();
+  if(this.showVehicleList) {this.getCurrentPage();}
     //TODO: fix loader
     //  this.watchLoader();
   }
 
   getCurrentPage(pageQuery?) {
+     console.log(pageQuery)
     let pageNumber;
-    if (pageQuery) {
+    if (pageQuery !== undefined) {
       this.changeParms(pageQuery.pageNumber);
       this.getVehicleList({ pageNumber: pageQuery.pageNumber });
     } else {
       this.route.queryParams.subscribe((params) => {
         pageNumber = params['pageNumber'];
       });
-      this.changeParms(pageNumber);
       if (pageNumber == undefined) {
+         this.getVehicleList();
       } else {
         this.changeParms(pageNumber);
         this.getVehicleList({ pageNumber: pageNumber });
