@@ -28,6 +28,7 @@ import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-
 import { VehicleDetailsComponent } from './components/vehicle/vehicle-details/vehicle-details.component';
 import { SearchVehicleComponent } from './components/vehicle/search-vehicle/search-vehicle.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/shared/layout/footer/footer.component';
 
 const TRANSLATIONS = { ar: arContent, en: enContent };
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -41,7 +42,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, VehicleListComponent, VehicleDetailsComponent, SearchVehicleComponent],
+  declarations: [AppComponent, HeaderComponent, VehicleListComponent, VehicleDetailsComponent, SearchVehicleComponent, FooterComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -1,0 +1,166 @@
+/* Footer Section CSS Start */
+.footer-area {
+   background: #069fe9;
+   padding-top: 55px;
+   border-radius: 60px 60px 0 0;
+ }
+ 
+ .footer-area .footer-widget .footer-logo img {
+   margin-bottom: 15px;
+ }
+ 
+ .footer-area .footer-widget p {
+   color: #ffffff;
+   margin-bottom: 30px;
+ }
+ 
+ .footer-area .footer-widget .footer-link {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+ }
+ 
+ .footer-area .footer-widget .footer-link a {
+   margin-right: 0px;
+   margin-left: 10px;
+
+ }
+ 
+ .footer-area .footer-widget .footer-link a:hover img {
+   -webkit-transform: scale(0.9);
+           transform: scale(0.9);
+ }
+ 
+ .footer-area .footer-widget .footer-link a img {
+   -webkit-transition: .5s;
+   transition: .5s;
+ }
+ 
+ .footer-area .footer-widget h3 {
+   color: #ffffff;
+   font-size: 22px;
+   font-weight: 600;
+   margin-bottom: 30px;
+ }
+ 
+ .footer-area .footer-widget ul {
+   padding-left: 0;
+   line-height: 1;
+   margin-bottom: 0;
+ }
+ 
+ .footer-area .footer-widget ul li {
+   display: block;
+   margin-bottom: 15px;
+   -webkit-transition: .5s;
+   transition: .5s;
+ }
+ 
+ .footer-area .footer-widget ul li a {
+   color: #ffffff;
+   -webkit-transition: .5s;
+   transition: .5s;
+ }
+ 
+ .footer-area .footer-widget ul li a:hover {
+   color: #513fcb;
+   margin-left: 2px;
+ }
+ 
+ .footer-area .footer-widget ul li a:hover i {
+   color: #513fcb;
+ }
+ 
+ .footer-area .footer-widget ul li a i {
+   font-size: 10px;
+   position: relative;
+   top: -2px;
+ }
+ 
+ .footer-area .footer-widget ul li i {
+   font-size: 10px;
+   position: relative;
+   top: -2px;
+   -webkit-transition: .5s;
+   transition: .5s;
+ }
+ 
+ .footer-area .footer-widget ul :last-child {
+   margin-bottom: 0;
+ }
+ 
+ .footer-area .pl-90 {
+   padding-left: 90px;
+ }
+ 
+ .footer-area .copyright-area {
+   border-top: 1px solid #42c1f1;
+   padding: 20px 0;
+   margin-top: 100px;
+ }
+ 
+ .footer-area .copyright-area img {
+   margin-right: 10px;
+ }
+ 
+ .footer-area .copyright-area p {
+   color: #ffffff;
+   margin-bottom: 0;
+   text-align: left;
+ }
+ 
+ .footer-area .copyright-area p a {
+   color: #ffffff;
+ }
+ 
+ .footer-area .copyright-area p a:hover {
+   color: #165885;
+ }
+ 
+ .footer-area .copyright-area .lh-1 {
+   line-height: 1;
+ }
+ 
+ /* Footer Section CSS End */
+/* Footer Area Start */
+.footer-style-three {
+   background: #2C3E50;
+ }
+ 
+ .footer-style-three .footer-logo {
+   margin-bottom: 5px;
+ }
+ 
+ .footer-style-three .footer-widget p {
+   color: #ffffff;
+ }
+ 
+ .footer-style-three .footer-widget h3 {
+   color: #ffff;
+ }
+ 
+ .footer-style-three .footer-widget ul li {
+   color: #ffff;
+ }
+ 
+ .footer-style-three .footer-widget ul li a {
+   color: #ffff;
+ }
+ 
+ .footer-style-three .footer-widget .footer-social a i {
+   background: #ffff;
+ }
+ 
+ .footer-style-three .footer-widget .footer-social a i:hover {
+   color: #0f2137;
+ }
+ 
+ .footer-style-three .copyright-area p {
+   color: #ffff;
+ }
+ 
+ .footer-style-three .copyright-area p a {
+   color: #ffff;
+ }
+ 
+ /* Footer Area End */ 
