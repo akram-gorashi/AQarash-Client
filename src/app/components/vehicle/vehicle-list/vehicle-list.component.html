@@ -3,7 +3,7 @@
       <div class="row mb-md-2">
 
          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let vehicle of vehicles">
-            <div class="card border-secondary  mb-3" style="max-width: 20rem;"
+            <div class="card border-secondary  mb-3" style="max-width: 20rem; width: 20rem;"
                [routerLink]="['/vehicle-details', vehicle.id]" (click)="vehicles = []">
                <a class="position-relative">
                   <img src="{{assetsUrl}}{{vehicle.imageUrl[0]}}" class="card-img-top" alt="vehicle-image"> </a>
@@ -39,6 +39,12 @@
                (pageChanged)="pageChanged($event)" [itemsPerPage]="paginationInfo.PageSize" previousText="&lsaquo;" nextText="&rsaquo;">
             </pagination>
          </div>
+      </div>
+
+      <div class="row justify-content-center" style="margin: 0px 2px;" *ngIf="!showVehicleList">
+            <button class="btn btn-primary btn-block">
+               تصفح مزيد من سيارات {{vehicles[0].make}}
+            </button>
       </div>
    </div>
 

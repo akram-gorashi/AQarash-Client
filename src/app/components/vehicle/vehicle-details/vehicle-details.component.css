@@ -32,3 +32,26 @@
    border: 4px solid rgba(0, 0, 0, 0.125);
    border-color: #18BC9C !important;
 }
+
+.icon {
+   font-size: 50px;
+   transition: all .2s ease-in-out;
+   cursor: pointer;
+}
+
+.icon :hover {
+   transform: scale(1.5);
+}
+.ion-logo-facebook {
+   color: #3b5998;
+}
+
+.ion-logo-whatsapp {
+   color: #4fce5d;
+}
+
+.ion-logo-twitter {
+   color: #00acee;
+}.ion-logo-instgram {
+   color: #3f729b ;
+}

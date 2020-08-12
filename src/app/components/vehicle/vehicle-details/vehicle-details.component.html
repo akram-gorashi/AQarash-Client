@@ -35,15 +35,9 @@
                </div>
             </slide>
          </carousel>
-         <ngx-image-gallery 
-         [images]="vehicle.imageUrl" 
-         [conf]="conf"
-         (onOpen)="galleryOpened($event)"
-         (onClose)="galleryClosed()"
-         (onImageClicked)="galleryImageClicked($event)"
-         (onImageChange)="galleryImageChanged($event)"
-         (onDelete)="deleteImage($event)"
-         ></ngx-image-gallery>
+         <ngx-image-gallery [images]="vehicle.imageUrl" [conf]="conf" (onOpen)="galleryOpened($event)"
+            (onClose)="galleryClosed()" (onImageClicked)="galleryImageClicked($event)"
+            (onImageChange)="galleryImageChanged($event)" (onDelete)="deleteImage($event)"></ngx-image-gallery>
          <!--  <div class="card-body d-flex flex-wrap">
             <div *ngFor="let image of vehicle.imageUrl; let i = index;">
                <img src="{{assetsUrl}}{{image}}" alt="car slide"
@@ -69,13 +63,27 @@
 
             </div>
          </div>
+
+         <div class="card pt-5">
+            <div class="card-header">
+               <h5>أنشر السيارة</h5>
+            </div>
+            <div class="card-body">
+               <div class="row d-flex justify-content-center justify-content-space-between">
+                  <i class="icon ion-logo-facebook"></i>
+                  <i class="icon ion-logo-whatsapp mr-3 ml-3"></i>
+                  <i class="icon ion-logo-twitter"></i>
+
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 
    <!-- ----------------------------------------------------------------------- -->
    <!--                            car details title                            -->
    <!-- ----------------------------------------------------------------------- -->
-   <div class="col-8  car-details">
+   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 car-details">
       <div class="row">
          <th>تفاصيل السيارة</th>
       </div>
@@ -159,11 +167,11 @@
             </li>
          </ul>
       </div>
+   </div>
 
-      <!-- ----------------------------------------------------------------------- -->
-      <!--                             related Vehicle                             -->
-      <!-- ----------------------------------------------------------------------- -->
-      <div class="row">
-         <app-vehicle-list [vehicles]="vehicle.relatedVehicles" [showVehicleList]="false"></app-vehicle-list>
-      </div>
+   <!-- ----------------------------------------------------------------------- -->
+   <!--                             related Vehicle                             -->
+   <!-- ----------------------------------------------------------------------- -->
+   <div class="row">
+      <app-vehicle-list [vehicles]="vehicle.relatedVehicles" [showVehicleList]="false"></app-vehicle-list>
    </div>
