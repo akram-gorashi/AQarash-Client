@@ -31,6 +31,7 @@ body[dir="ltr"] .form-label {
 
 }
 @media (max-width: 500px) {
-  .search-input {
-  }
+   section {
+      height: 100vh;
+    }
 }

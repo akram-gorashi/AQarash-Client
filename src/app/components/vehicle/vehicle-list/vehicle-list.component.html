@@ -36,15 +36,16 @@
       <div class="row justify-content-center pt-5" *ngIf="showVehicleList">
          <div class="pagination pagination-lg">
             <pagination [totalItems]="paginationInfo.TotalCount" [ngModel]="paginationInfo.CurrentPage"
-               (pageChanged)="pageChanged($event)" [itemsPerPage]="paginationInfo.PageSize" previousText="&lsaquo;" nextText="&rsaquo;">
+               (pageChanged)="pageChanged($event)" [itemsPerPage]="paginationInfo.PageSize" previousText="&lsaquo;"
+               nextText="&rsaquo;">
             </pagination>
          </div>
       </div>
 
       <div class="row justify-content-center" style="margin: 0px 2px;" *ngIf="!showVehicleList">
-            <button class="btn btn-primary btn-block">
-               تصفح مزيد من سيارات {{vehicles[0].make}}
-            </button>
+         <button class="btn btn-primary btn-block" [routerLink]="['/', {queryParams: {make: vehicles[0].make}}]">
+            تصفح مزيد من سيارات {{vehicles[0].make}}
+         </button>
       </div>
    </div>
 

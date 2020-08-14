@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   bsModalRef: BsModalRef;
   isOnMidScreen: boolean;
   isCollapsed = false;
+  hasScrolledBanner: boolean = false;
+  isNavbarCollapsed: boolean = false;
   constructor(
     private appService: AppService,
     private modalService: BsModalService
@@ -59,7 +61,9 @@ export class HeaderComponent implements OnInit {
   }
 
   openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(SearchVehicleComponent, {class:'modal-dialog-centered'});
+    this.bsModalRef = this.modalService.show(SearchVehicleComponent, {
+      class: 'modal-dialog-centered',
+    });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
@@ -70,5 +74,12 @@ export class HeaderComponent implements OnInit {
     window.innerWidth <= 500
       ? (this.isOnMidScreen = true)
       : (this.isOnMidScreen = false);
+  }
+
+  // Window scroll events
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (window.pageYOffset > 200) this.hasScrolledBanner = true;
+    else this.hasScrolledBanner = false;
   }
 }

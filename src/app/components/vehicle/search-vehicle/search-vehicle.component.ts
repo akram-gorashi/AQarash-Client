@@ -21,6 +21,7 @@ export class SearchVehicleComponent implements OnInit {
     this.getMasterTableData();
     this.initForm();
     this.generateYears();
+    this.getScreenSize();
   }
   generateYears() {
     var nowY = new Date().getFullYear();
@@ -76,9 +77,10 @@ export class SearchVehicleComponent implements OnInit {
  @HostListener('window:resize', ['$event'])
  getScreenSize(event?): void {
    // If browser window is resized below mid screen size width
-   window.innerWidth <= 500
+   window.innerWidth <= 767
      ? (this.isOnMidScreen = true)
      : (this.isOnMidScreen = false);
+     console.log(this.isOnMidScreen)
  }
   
 }

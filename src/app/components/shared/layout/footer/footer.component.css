@@ -1,12 +1,14 @@
 /* Footer Section CSS Start */
 .footer-area {
    background: #069fe9;
-   padding-top: 55px;
+   padding-top: 50px;
    border-radius: 60px 60px 0 0;
  }
  
  .footer-area .footer-widget .footer-logo img {
    margin-bottom: 15px;
+      width: 150px;
+      height: 58px;
  }
  
  .footer-area .footer-widget p {
@@ -44,7 +46,7 @@
  }
  
  .footer-area .footer-widget ul {
-   padding-left: 0;
+   padding-right: 0;
    line-height: 1;
    margin-bottom: 0;
  }
@@ -148,7 +150,7 @@
  }
  
  .footer-style-three .footer-widget .footer-social a i {
-   background: #ffff;
+   font-size: 30px;
  }
  
  .footer-style-three .footer-widget .footer-social a i:hover {
@@ -162,5 +164,8 @@
  .footer-style-three .copyright-area p a {
    color: #ffff;
  }
- 
+ .footer-area .footer-widget.pl-90 {
+   padding-right: 0;
+   padding-left: 0;
+}
  /* Footer Area End */ 
