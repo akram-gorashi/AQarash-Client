@@ -35,7 +35,7 @@
                </div>
             </slide>
          </carousel>
-         <ngx-image-gallery [images]="vehicle.imageUrl" [conf]="conf" (onOpen)="galleryOpened($event)"
+         <ngx-image-gallery [images]="images"  [conf]="conf" (onOpen)="galleryOpened($event)"
             (onClose)="galleryClosed()" (onImageClicked)="galleryImageClicked($event)"
             (onImageChange)="galleryImageChanged($event)" (onDelete)="deleteImage($event)"></ngx-image-gallery>
          <!--  <div class="card-body d-flex flex-wrap">
@@ -44,6 +44,7 @@
                   [ngClass]="{'image-active': activeImage === i, 'image':activeImage !== i }" (click)="activeImage = i">
             </div>
          </div> -->
+        {{ vehicle.imageUrl}}
       </div>
 
       <!-- ----------------------------------------------------------------------- -->

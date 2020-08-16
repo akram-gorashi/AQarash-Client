@@ -4,7 +4,11 @@ import { VehiclesService } from 'src/app/services/vehicles/vehicles.service';
 import { Vehicle } from 'src/app/models/app/Vehicle/Vehicle';
 import { environment } from 'src/environments/environment';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
-import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from "ngx-image-gallery";
+import {
+  NgxImageGalleryComponent,
+  GALLERY_IMAGE,
+  GALLERY_CONF,
+} from 'ngx-image-gallery';
 @Component({
   selector: 'app-vehicle-details',
   templateUrl: './vehicle-details.component.html',
@@ -22,7 +26,8 @@ export class VehicleDetailsComponent implements OnInit {
   activeImage: number = 1;
 
   // get reference to gallery component
-  @ViewChild(NgxImageGalleryComponent, {static: false}) ngxImageGallery: NgxImageGalleryComponent;
+  @ViewChild(NgxImageGalleryComponent)
+  ngxImageGallery: NgxImageGalleryComponent;
 
   // gallery configuration
   conf: GALLERY_CONF = {
@@ -31,8 +36,8 @@ export class VehicleDetailsComponent implements OnInit {
     showImageTitle: false,
   };
 
-
-
+  // gallery images
+  images: GALLERY_IMAGE[] = [];
   constructor(
     private route: ActivatedRoute,
     private vehicleService: VehiclesService
@@ -45,20 +50,21 @@ export class VehicleDetailsComponent implements OnInit {
 
   getVehicleInfo() {
     const id = this.route.snapshot.params['id'];
-    this.vehicleService.getVehicle(id).subscribe((vehicle: Vehicle) => {
-      console.log(vehicle.imageUrl);
-      this.vehicle = vehicle;
-    }),
-      (error: any) => {
-        console.log(error);
-      }
-      /* (complete: any) => {
-         console.log(complete)
+    this.vehicleService.getVehicle(id).subscribe(
+      (vehicle: Vehicle) => {
+        this.vehicle = vehicle;
+      },
+      (error) => console.log(error),
+      () =>
         this.vehicle.imageUrl.forEach((imageUrl) => {
-          imageUrl = this.assetsUrl + imageUrl;
-        });
-        console.log(this.vehicle.imageUrl);
-      }; */
+          this.images.push({
+            url: imageUrl,
+            altText: '',
+            extUrl: '',
+            thumbnailUrl: '',
+          });
+        })
+    );
   }
 
   // METHODS

@@ -49,7 +49,7 @@ export class AppService {
          this.translate.use('ar');
          const oldlink = document.getElementsByTagName('link').item(1);
          const newlink = document.createElement('link');
-         document.title = ("موقع هناي - سيارات للبيع في السودان");
+         document.title = ("موقع القراش - سيارات للبيع في السودان");
          newlink.setAttribute('rel', 'stylesheet');
          newlink.setAttribute('type', 'text/css');
          // newlink.setAttribute('integrity', 'sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If');
