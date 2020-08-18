@@ -1,5 +1,5 @@
 <section>
-   <div class="container p-4" style="background-color: #ecf0f1 ; display: none;" *ngIf="!isLoading">
+   <div class="container p-4" style="background-color: #ecf0f1 ;" *ngIf="!isLoading">
       <div class="row mb-md-2">
 
          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let vehicle of vehicles">
@@ -48,7 +48,7 @@
          </button>
       </div>
    </div>
-<div class="loader">
+<div class="loader" *ngIf="isLoading">
    <app-loader></app-loader>
 </div>
 </section>

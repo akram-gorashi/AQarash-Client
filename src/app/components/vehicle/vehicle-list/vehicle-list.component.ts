@@ -29,7 +29,7 @@ export class VehicleListComponent implements OnInit {
     // load page based on 'page' query param or default to 1
   if(this.showVehicleList) {this.getCurrentPage();}
     //TODO: fix loader
-    //  this.watchLoader();
+     this.watchLoader();
   }
 
   getCurrentPage(pageQuery?) {

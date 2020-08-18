@@ -36,10 +36,10 @@ export class VehiclesService {
         //  Set pagination info from response header
         this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
         this.setVehicle(res.body);
-        this.isLoading.next(false);
       }, err => {
          console.log(err)
       }, () => {
+         this.isLoading.next(false);
          window.scroll({
             top: 100,
             behavior: 'smooth',
