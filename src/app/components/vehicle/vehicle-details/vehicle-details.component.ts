@@ -34,6 +34,7 @@ export class VehicleDetailsComponent implements OnInit {
     imageOffset: '0px',
     showDeleteControl: false,
     showImageTitle: false,
+    closeOnEsc: true
   };
 
   // gallery images
