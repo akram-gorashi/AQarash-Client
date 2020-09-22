@@ -19,6 +19,9 @@ export class VehiclesService {
   constructor(private http: HttpClient) {}
 
   requestGetVehicles(filterQuery?: Vehicle) {
+   console.log(this.isLoading)
+     // show the loader
+   //  this.isLoading.next(true);
     // Construct Http URL String query parameters from queries object
     let myQuery = this.vehiclesUrl + '?';
     for (let entry in filterQuery) {
@@ -27,24 +30,27 @@ export class VehiclesService {
 
     // remove last '&'
     myQuery = myQuery.substring(0, myQuery.length - 1);
-    console.log(myQuery)
-    // show the loader
-    this.isLoading.next(true);
+    console.log(myQuery);
     this.http
       .get<Vehicle[]>(myQuery, { observe: 'response' })
-      .subscribe((res) => {
-        //  Set pagination info from response header
-        this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
-        this.setVehicle(res.body);
-      }, err => {
-         console.log(err)
-      }, () => {
-         this.isLoading.next(false);
-         window.scroll({
+      .subscribe(
+        (res) => {
+          //  Set pagination info from response header
+          this.pagination.next(JSON.parse(res.headers.get('X-Pagination')));
+          this.setVehicle(res.body);
+        },
+        (err) => {
+          console.log(err);
+          this.isLoading.next(false);
+        },
+        () => {
+          window.scroll({
             top: 100,
             behavior: 'smooth',
           });
-      });
+          this.isLoading.next(false);
+        }
+      );
   }
 
   public setVehicle(vehicles: Vehicle[]): void {
@@ -58,6 +64,13 @@ export class VehiclesService {
   public getVehicle(id: number) {
     return this.http.get(this.vehiclesUrl + '/' + id);
   }
+
+ /*  getVehcileImage(imageInfo: any) {
+    const params = new HttpParams()
+      .set('folderPath', imageInfo.folderPath)
+      .set('fileIndex', imageInfo.fileIndex);
+   return this.http.get<any>(environment.assetsUrl, { params: params });
+  } */
 
   public getMasterTableData() {
     return this.http.get<any>(environment.apiUrl + 'masterTable');

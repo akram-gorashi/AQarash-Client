@@ -13,7 +13,7 @@ export interface Vehicle {
   transmission?: string;
   price?: number;
   description?: string;
-  imageUrl?: string[];
+  imageUrl?: any;
   agentLocation?: string;
   agentName?: string;
   agentPhoneNumber?: string;

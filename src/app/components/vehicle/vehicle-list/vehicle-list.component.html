@@ -6,7 +6,7 @@
             <div class="card border-secondary  mb-3" style="max-width: 20rem; width: 20rem;"
                [routerLink]="['/vehicle-details', vehicle.id]" (click)="vehicles = []">
                <a class="position-relative">
-                  <img src="{{assetsUrl}}{{vehicle.imageUrl[0]}}" class="card-img-top" alt="vehicle-image"> </a>
+                  <img src="{{vehicle.imageUrl}}" class="card-img-top" alt="vehicle-image"> </a>
                <div class="card-body">
                   <a class="d-flex align-items-start">
                      <h5 class="font-weight-normal text-success">{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}

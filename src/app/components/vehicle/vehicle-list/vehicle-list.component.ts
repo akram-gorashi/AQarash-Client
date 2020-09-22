@@ -10,11 +10,9 @@ import { PaginationResponse } from 'src/app/models/app/Vehicle/PaginationRespons
   templateUrl: './vehicle-list.component.html',
   styleUrls: ['./vehicle-list.component.css'],
 })
-
 export class VehicleListComponent implements OnInit {
-
   @Input() vehicles: Vehicle[];
-  @Input() showVehicleList : boolean = true;
+  @Input() showVehicleList: boolean = true;
   assetsUrl: string = environment.assetsUrl;
   paginationInfo: PaginationResponse = <PaginationResponse>{};
   isLoading: boolean;
@@ -25,15 +23,17 @@ export class VehicleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-     console.log(this.showVehicleList)
+    console.log(this.showVehicleList);
     // load page based on 'page' query param or default to 1
-  if(this.showVehicleList) {this.getCurrentPage();}
-    //TODO: fix loader
-     this.watchLoader();
+    if (this.showVehicleList) {
+      this.getCurrentPage();
+    }
   }
 
   getCurrentPage(pageQuery?) {
-     console.log(pageQuery)
+      //TODO: fix loader
+     this.watchLoader();
+    console.log(pageQuery);
     let pageNumber;
     if (pageQuery !== undefined) {
       this.changeParms(pageQuery.pageNumber);
@@ -43,7 +43,7 @@ export class VehicleListComponent implements OnInit {
         pageNumber = params['pageNumber'];
       });
       if (pageNumber == undefined) {
-         this.getVehicleList();
+        this.getVehicleList();
       } else {
         this.changeParms(pageNumber);
         this.getVehicleList({ pageNumber: pageNumber });
@@ -55,7 +55,17 @@ export class VehicleListComponent implements OnInit {
     this.vehicleService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
       this.paginationInfo = this.vehicleService.pagination.value;
-    });
+      this.vehicles.forEach((vehicle) => {
+        vehicle.imageUrl = this.getVehcileImage(vehicle.id, 1);
+      });
+    }, err=> {console.log(err)},
+    () => {console.log('completed')});
+  }
+
+  getVehcileImage(folderPath: number, fileIndex: number) {
+    let imageUrl =
+      this.assetsUrl + '?folderPath=' + folderPath + '&fileIndex=' + fileIndex;
+    return imageUrl;
   }
 
   watchLoader() {
@@ -63,10 +73,12 @@ export class VehicleListComponent implements OnInit {
       this.isLoading = isLoading;
     });
   }
+
   pageChanged(e: any) {
     let pageQuery = { pageNumber: e.page, pageSize: e.itemsPerPage };
     this.getCurrentPage(pageQuery);
   }
+
   changeParms(newParams) {
     this.router.navigate([], {
       queryParams: {

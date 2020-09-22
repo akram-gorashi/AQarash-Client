@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
+  /* apiUrl: 'https://alqraash.com/api/',
+  assetsUrl: 'https://alqraash.com/api' */
   apiUrl: 'http://localhost:5000/api/',
-  assetsUrl: 'http://127.0.0.1:8080'
+  assetsUrl: 'http://localhost:5000/api/vehicle/image'
 };
 
 /*
